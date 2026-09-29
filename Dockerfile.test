@@ -1,0 +1,21 @@
+# Образ для ПРОВЕРКИ сборки: ставит зависимости, гоняет тесты, но ничего не запускает.
+# docker build -f Dockerfile.test -t projectcontrol-test .
+# docker run --rm projectcontrol-test
+
+FROM python:3.13-slim
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PROJECTCONTROL_HOME=/tmp/pc-home
+
+WORKDIR /app
+
+COPY requirements.txt requirements-dev.txt ./
+RUN pip install -r requirements-dev.txt
+
+COPY . .
+
+RUN python -m pytest -q
+
+CMD ["python", "run.py", "--host", "0.0.0.0", "--port", "8770", "--no-browser"]

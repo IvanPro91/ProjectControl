@@ -1,0 +1,27 @@
+# Сборка образа
+docker build -t projectcontrol .
+
+# Запуск: порт панели наружу, диск с проектами внутрь
+docker run -d --name projectcontrol \
+  -p 8770:8770 \
+  -v C:/Projects:/projects \
+  -v projectcontrol-data:/data \
+  projectcontrol
+
+# Только на localhost (безопасно по умолчанию)
+docker run -d --name projectcontrol \
+  -p 127.0.0.1:8770:8770 \
+  -v C:/Projects:/projects \
+  projectcontrol
+
+# Linux / macOS
+docker run -d --name projectcontrol \
+  -p 8770:8770 \
+  -v ~/projects:/projects \
+  projectcontrol
+
+# Остановить и удалить (данные в томе сохранятся)
+docker rm -f projectcontrol
+
+# Полностью снести вместе с данными
+docker volume rm projectcontrol-data

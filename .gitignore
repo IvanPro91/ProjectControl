@@ -1,0 +1,54 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# --- Виртуальные окружения ---
+.venv/
+venv/
+ENV/
+env/
+
+# --- Сборка и пакеты ---
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# --- Тесты и кэши ---
+.pytest_cache/
+.pytest_tmp/
+.ruff_cache/
+.mypy_cache/
+.coverage
+coverage.xml
+htmlcov/
+.tox/
+
+# --- Node (используется только для скрипта проверки фронтенда) ---
+node_modules/
+package-lock.json
+package.json
+
+# --- Локальные данные ---
+data/
+*.db
+*.sqlite3
+*.log
+
+# --- IDE / ОС ---
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Секреты ---
+.env
+.env.*
+!.env.example

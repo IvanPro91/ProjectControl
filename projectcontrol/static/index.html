@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProjectControl</title>
+<link rel="stylesheet" href="/static/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f8cff'/><path d='M30 36h40M30 50h26M30 64h32' stroke='white' stroke-width='9' stroke-linecap='round'/></svg>">
+</head>
+<body>
+<div id="toasts" class="toasts"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="logo"></span>
+    <div>
+      <h1>ProjectControl</h1>
+      <p id="subtitle">панель управления проектами</p>
+    </div>
+  </div>
+  <div class="topbar-actions">
+    <span id="conn" class="pill pill-offline">подключение…</span>
+    <button id="btn-add" class="btn btn-primary">+ Добавить проект</button>
+    <button id="btn-templates" class="btn">Шаблоны</button>
+    <button id="btn-settings" class="btn">Настройки</button>
+    <button id="btn-stop-all" class="btn btn-sm btn-danger" title="Остановить все процессы во всех проектах">Остановить всё</button>
+  </div>
+</header>
+
+<main>
+  <section id="projects" class="projects"></section>
+  <div id="empty" class="empty hidden">
+    <h2>Пока нет проектов</h2>
+    <p>Добавь корневую папку — ProjectControl сам определит тип (Django, FastAPI, Node, Celery) и предложит команды запуска.</p>
+    <button class="btn btn-primary" data-action="add-project">Добавить проект</button>
+  </div>
+</main>
+
+<section id="dock" class="dock collapsed">
+  <div class="dock-resizer" id="dock-resizer" title="Потяни, чтобы изменить высоту"></div>
+  <header class="dock-head">
+    <div class="dock-tabs" id="dock-tabs"></div>
+    <div class="dock-tools">
+      <span id="dock-meta" class="muted"></span>
+      <input type="search" id="dock-search" placeholder="Поиск по логу" autocomplete="off">
+      <label class="check" style="margin:0"><input type="checkbox" id="dock-follow" checked> автоскролл</label>
+      <button class="btn btn-sm" id="dock-clear" title="Очистить лог этой вкладки">Очистить</button>
+      <button class="btn btn-sm btn-icon" id="dock-max" title="Развернуть / свернуть">⤢</button>
+      <button class="btn btn-sm btn-icon" id="dock-close" title="Скрыть панель (Ctrl+`)">✕</button>
+    </div>
+  </header>
+  <div class="dock-note hidden" id="dock-note"></div>
+  <div class="dock-body" id="dock-body"></div>
+</section>
+
+<div id="modal-root"></div>
+
+<script src="/static/core.js"></script>
+<script src="/static/logs.js"></script>
+<script src="/static/cards.js"></script>
+<script src="/static/editor.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>
